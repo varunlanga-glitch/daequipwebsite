@@ -59,8 +59,8 @@ export default function Navbar() {
 
         {/* Main nav */}
         <div className="flex items-center justify-between h-16">
-          <a href="#" className="font-heading text-2xl tracking-wider text-accent">
-            DAEQUIP
+          <a href="#">
+            <img src="/images/daequip-logo-white.png" alt="Daequip" className="h-8" />
           </a>
 
           {/* Desktop links */}

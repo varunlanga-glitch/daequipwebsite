@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 md:grid-cols-12 gap-10">
           {/* Brand */}
           <div className="md:col-span-4">
-            <h3 className="font-heading text-3xl text-accent mb-4">DAEQUIP</h3>
+            <img src="/images/daequip-logo-white.png" alt="Daequip" className="h-8 mb-4" />
             <p className="text-muted text-sm leading-relaxed mb-4">
               Premium Attachments Ltd.
               <br />
