@@ -6,9 +6,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 const STAT_CARDS = [
   { value: '35+', label: 'Years of Experience' },
-  { value: '2 Year', label: 'Warranty on All Products' },
+  { value: '2 Year', label: 'Warranty Standard' },
   { value: '1989', label: 'Year Founded' },
-  { value: 'NA', label: 'Ships All of North America' },
+  { value: 'N. America', label: 'Shipping Coverage' },
 ]
 
 const TEAM = [
@@ -45,23 +45,36 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-28 px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
-        <div ref={headingRef}>
-          <p className="font-condensed text-accent uppercase tracking-[0.3em] text-sm mb-2">
-            Who We Are
-          </p>
-          <h2 className="font-heading text-5xl md:text-6xl mb-6">
-            About Daequip
-          </h2>
-        </div>
+        {/* Top section: image + text side by side */}
+        <div className="grid md:grid-cols-2 gap-12 mb-20">
+          {/* Image */}
+          <div className="relative overflow-hidden h-80 md:h-auto">
+            <img
+              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+              alt="Heavy equipment at work"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-page/30 to-transparent" />
+            {/* Accent corner */}
+            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-accent" />
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-accent" />
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <p className="text-muted leading-relaxed mb-4">
+          {/* Text */}
+          <div ref={headingRef}>
+            <p className="font-condensed text-accent uppercase tracking-[0.3em] text-sm mb-3 flex items-center gap-3">
+              <span className="w-8 h-px bg-accent inline-block" />
+              Who We Are
+            </p>
+            <h2 className="font-heading text-5xl md:text-6xl mb-6">
+              About Daequip
+            </h2>
+            <p className="text-muted leading-relaxed mb-5">
               Daequip Premium Attachments Ltd has been designing and manufacturing heavy equipment attachments in Langley, British Columbia since 1989. From excavator buckets to custom fabrication, every product is CAD-engineered and built to withstand the toughest conditions in construction, mining, forestry, and oil & gas.
             </p>
-            <p className="text-muted leading-relaxed mb-4">
+            <p className="text-muted leading-relaxed mb-5">
               We are a proudly Canadian manufacturer shipping across all of North America. Every attachment comes with a 2-year warranty and is backed by over 35 years of engineering expertise.
             </p>
             <p className="text-muted leading-relaxed">
@@ -73,43 +86,50 @@ export default function About() {
                 className="text-accent hover:underline"
               >
                 Dormel Containers
-              </a>
+              </a>{' '}
+              &mdash; dormelcontainers.com
             </p>
-          </div>
-
-          {/* Team table */}
-          <div>
-            <h3 className="font-heading text-2xl mb-4 text-accent">Leadership Team</h3>
-            <table className="w-full">
-              <tbody>
-                {TEAM.map((member) => (
-                  <tr key={member.name} className="border-b border-white/5">
-                    <td className="py-3 font-condensed font-semibold text-text">
-                      {member.name}
-                    </td>
-                    <td className="py-3 text-muted text-sm text-right">
-                      {member.role}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
 
         {/* Stat cards */}
-        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
           {STAT_CARDS.map((stat) => (
             <div
               key={stat.label}
-              className="stat-card bg-card border border-white/5 p-6 text-center group hover:bg-card-hover transition-colors"
+              className="stat-card bg-card border border-white/5 p-8 group hover:bg-card-hover transition-all relative overflow-hidden"
             >
-              <div className="font-heading text-4xl text-accent mb-2">{stat.value}</div>
+              <div className="font-heading text-4xl md:text-5xl text-accent mb-2">{stat.value}</div>
               <div className="font-condensed text-xs uppercase tracking-wider text-muted">
                 {stat.label}
               </div>
+              {/* Decorative line */}
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             </div>
           ))}
+        </div>
+
+        {/* Team */}
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="font-heading text-3xl mb-2">Leadership Team</h3>
+            <p className="text-muted text-sm mb-6">The people behind 35+ years of premium attachments.</p>
+          </div>
+          <div>
+            {TEAM.map((member, i) => (
+              <div key={member.name} className="flex items-center justify-between py-4 border-b border-white/5">
+                <div className="flex items-center gap-4">
+                  <span className="font-heading text-sm text-accent/40 w-6">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-condensed font-semibold text-text text-lg">
+                    {member.name}
+                  </span>
+                </div>
+                <span className="text-muted text-sm">
+                  {member.role}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

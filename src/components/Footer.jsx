@@ -1,42 +1,56 @@
+import { Phone, Envelope, MapPin } from '@phosphor-icons/react'
+
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-white/5 py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-page border-t border-white/5">
+      {/* Main footer */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-12 gap-10">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-4">
             <h3 className="font-heading text-3xl text-accent mb-4">DAEQUIP</h3>
-            <p className="text-muted text-sm leading-relaxed mb-3">
+            <p className="text-muted text-sm leading-relaxed mb-4">
               Premium Attachments Ltd.
               <br />
-              Made in Langley, BC since 1989.
+              Designing and manufacturing heavy equipment attachments in Langley, BC since 1989.
             </p>
-            <p className="font-condensed text-xs text-muted uppercase tracking-wider">
-              #YouCanDigUs
-            </p>
+            <div className="flex items-center gap-2 mb-3">
+              <Phone size={14} className="text-accent" />
+              <a href="tel:6048828008" className="text-muted text-sm hover:text-accent transition-colors">604-882-8008</a>
+            </div>
+            <div className="flex items-center gap-2 mb-3">
+              <Envelope size={14} className="text-accent" />
+              <a href="mailto:info@daequip.com" className="text-muted text-sm hover:text-accent transition-colors">info@daequip.com</a>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin size={14} className="text-accent" />
+              <span className="text-muted text-sm">2141 Queen Street, Abbotsford BC</span>
+            </div>
           </div>
 
           {/* Products */}
-          <div>
-            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-4">
+          <div className="md:col-span-3">
+            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-accent inline-block" />
               Products
             </h4>
-            <ul className="space-y-2 text-muted text-sm">
-              <li>Digging Buckets</li>
-              <li>Hydraulic Thumbs</li>
-              <li>Long Reach Booms</li>
-              <li>WL Buckets & Attachments</li>
-              <li>Machine Guarding</li>
-              <li>Custom Fabrication</li>
+            <ul className="space-y-2.5 text-muted text-sm">
+              <li><a href="#products" className="hover:text-accent transition-colors">Digging Buckets</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">Hydraulic Thumbs</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">Long Reach Booms</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">WL Buckets & Attachments</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">Machine Guarding</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors">Custom Fabrication</a></li>
             </ul>
           </div>
 
           {/* Company */}
-          <div>
-            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-4">
+          <div className="md:col-span-2">
+            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-accent inline-block" />
               Company
             </h4>
-            <ul className="space-y-2 text-muted text-sm">
+            <ul className="space-y-2.5 text-muted text-sm">
               <li><a href="#about" className="hover:text-accent transition-colors">About Us</a></li>
               <li><a href="#services" className="hover:text-accent transition-colors">Services</a></li>
               <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>
@@ -53,23 +67,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-4">
-              Contact
+          {/* Hours & CTA */}
+          <div className="md:col-span-3">
+            <h4 className="font-condensed text-sm uppercase tracking-wider text-text mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-accent inline-block" />
+              Hours
             </h4>
-            <ul className="space-y-2 text-muted text-sm">
-              <li>604-882-8008</li>
-              <li>info@daequip.com</li>
-              <li>2141 Queen Street</li>
-              <li>Abbotsford BC V2T6J3</li>
-              <li>Mon–Fri 7:30 AM – 4:30 PM</li>
-            </ul>
+            <p className="text-muted text-sm mb-2">Mon–Fri 7:30 AM – 4:30 PM</p>
+            <p className="text-muted text-xs mb-6">Closed weekends & statutory holidays</p>
+            <a
+              href="#contact"
+              className="btn-angled inline-block bg-accent text-page font-condensed font-bold uppercase tracking-wider px-6 py-2.5 text-xs hover:bg-yellow-400 transition-colors"
+            >
+              Request a Quote
+            </a>
           </div>
         </div>
+      </div>
 
-        {/* Certifications & bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* Bottom bar */}
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted text-xs">
             &copy; {new Date().getFullYear()} Daequip Premium Attachments Ltd. All rights reserved.
           </p>

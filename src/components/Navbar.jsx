@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { List, X } from '@phosphor-icons/react'
+import { List, X, Phone } from '@phosphor-icons/react'
 
 const NAV_LINKS = [
   { label: 'Products', href: '#products' },
@@ -43,49 +43,67 @@ export default function Navbar() {
         backdropFilter: scrolled ? 'blur(14px)' : 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <a href="#" className="font-heading text-2xl tracking-wider text-accent">
-          DAEQUIP
-        </a>
-
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`font-condensed text-sm uppercase tracking-widest transition-colors duration-200 ${
-                activeSection === link.href.slice(1)
-                  ? 'text-accent'
-                  : 'text-muted hover:text-text'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-5 py-2 hover:bg-yellow-400 transition-colors"
-          >
-            Get a Quote
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        {/* Top bar — phone & hours (hidden on scroll) */}
+        <div
+          className={`hidden md:flex items-center justify-end gap-6 text-xs text-muted font-condensed uppercase tracking-wider py-2 border-b border-white/5 transition-all duration-300 overflow-hidden ${
+            scrolled ? 'max-h-0 py-0 border-transparent opacity-0' : 'max-h-10 opacity-100'
+          }`}
+        >
+          <a href="tel:6048828008" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+            <Phone size={12} weight="bold" />
+            604-882-8008
           </a>
+          <span>Mon–Fri 7:30 AM – 4:30 PM</span>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-text"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={28} /> : <List size={28} />}
-        </button>
+        {/* Main nav */}
+        <div className="flex items-center justify-between h-16">
+          <a href="#" className="font-heading text-2xl tracking-wider text-accent">
+            DAEQUIP
+          </a>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`font-condensed text-sm uppercase tracking-widest transition-colors duration-200 relative ${
+                  activeSection === link.href.slice(1)
+                    ? 'text-accent'
+                    : 'text-muted hover:text-text'
+                }`}
+              >
+                {link.label}
+                {activeSection === link.href.slice(1) && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent" />
+                )}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-6 py-2.5 hover:bg-yellow-400 transition-colors"
+            >
+              Get a Quote
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden text-text"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={28} /> : <List size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? 'max-h-80' : 'max-h-0'
+          mobileOpen ? 'max-h-96' : 'max-h-0'
         }`}
         style={{ backgroundColor: 'rgba(9,12,15,0.97)' }}
       >
@@ -105,9 +123,16 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href="tel:6048828008"
+            className="font-condensed text-sm text-muted flex items-center gap-2"
+          >
+            <Phone size={14} />
+            604-882-8008
+          </a>
+          <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-5 py-2 text-center"
+            className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-6 py-2.5 text-center mt-2"
           >
             Get a Quote
           </a>
