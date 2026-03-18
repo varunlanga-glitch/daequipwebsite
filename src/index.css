@@ -49,6 +49,12 @@ body {
   animation: marquee-scroll 30s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

@@ -34,6 +34,7 @@ export default function Contact() {
   const headingRef = useRef(null)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     gsap.from(headingRef.current, {
       y: 40,
       opacity: 0,
@@ -53,7 +54,10 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full bg-page border border-white/10 px-4 py-3.5 text-text text-sm font-body focus:outline-none focus:border-accent transition-colors placeholder:text-muted/40'
+    'w-full bg-page border border-white/10 px-4 py-3.5 text-text text-sm font-body focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent transition-colors placeholder:text-muted/60'
+
+  const labelClass =
+    'font-condensed text-[10px] uppercase tracking-widest text-accent mb-1.5 block'
 
   return (
     <section id="contact" className="py-28 px-6 lg:px-10 bg-card">
@@ -128,55 +132,79 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="bg-page border border-white/5 p-8 md:p-10">
                 <h3 className="font-heading text-2xl mb-6">RFQ Form</h3>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input
-                      type="text" name="firstName" placeholder="First Name *" required
-                      value={form.firstName} onChange={handleChange} className={inputClass}
-                    />
-                    <input
-                      type="text" name="lastName" placeholder="Last Name *" required
-                      value={form.lastName} onChange={handleChange} className={inputClass}
-                    />
+                    <div>
+                      <label htmlFor="rfq-firstName" className={labelClass}>First Name *</label>
+                      <input
+                        id="rfq-firstName" type="text" name="firstName" placeholder="John" required
+                        value={form.firstName} onChange={handleChange} className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="rfq-lastName" className={labelClass}>Last Name *</label>
+                      <input
+                        id="rfq-lastName" type="text" name="lastName" placeholder="Smith" required
+                        value={form.lastName} onChange={handleChange} className={inputClass}
+                      />
+                    </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input
-                      type="text" name="company" placeholder="Company"
-                      value={form.company} onChange={handleChange} className={inputClass}
-                    />
-                    <input
-                      type="email" name="email" placeholder="Email *" required
-                      value={form.email} onChange={handleChange} className={inputClass}
-                    />
+                    <div>
+                      <label htmlFor="rfq-company" className={labelClass}>Company</label>
+                      <input
+                        id="rfq-company" type="text" name="company" placeholder="Smith Excavating Ltd."
+                        value={form.company} onChange={handleChange} className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="rfq-email" className={labelClass}>Email *</label>
+                      <input
+                        id="rfq-email" type="email" name="email" placeholder="john@company.com" required
+                        value={form.email} onChange={handleChange} className={inputClass}
+                      />
+                    </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input
-                      type="tel" name="phone" placeholder="Phone"
-                      value={form.phone} onChange={handleChange} className={inputClass}
-                    />
-                    <select
-                      name="product" value={form.product} onChange={handleChange}
-                      className={inputClass}
-                    >
-                      <option value="">Select Product</option>
-                      {PRODUCT_OPTIONS.map((p) => (
-                        <option key={p} value={p}>{p}</option>
-                      ))}
-                    </select>
+                    <div>
+                      <label htmlFor="rfq-phone" className={labelClass}>Phone</label>
+                      <input
+                        id="rfq-phone" type="tel" name="phone" placeholder="(604) 000-0000"
+                        value={form.phone} onChange={handleChange} className={inputClass}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="rfq-product" className={labelClass}>Product Interest</label>
+                      <select
+                        id="rfq-product" name="product" value={form.product} onChange={handleChange}
+                        className={`${inputClass} cursor-pointer`}
+                      >
+                        <option value="">Select Product</option>
+                        {PRODUCT_OPTIONS.map((p) => (
+                          <option key={p} value={p}>{p}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
-                  <input
-                    type="text" name="machineModel" placeholder="Machine Make & Model"
-                    value={form.machineModel} onChange={handleChange} className={inputClass}
-                  />
-                  <textarea
-                    name="notes" placeholder="Notes / Additional Details" rows={5}
-                    value={form.notes} onChange={handleChange}
-                    className={`${inputClass} resize-none`}
-                  />
+                  <div>
+                    <label htmlFor="rfq-machine" className={labelClass}>Machine Make &amp; Model</label>
+                    <input
+                      id="rfq-machine" type="text" name="machineModel" placeholder="e.g. CAT 320 / 20T"
+                      value={form.machineModel} onChange={handleChange} className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="rfq-notes" className={labelClass}>Additional Notes</label>
+                    <textarea
+                      id="rfq-notes" name="notes" placeholder="Quantity, dimensions, specific requirements..." rows={5}
+                      value={form.notes} onChange={handleChange}
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
                   <button
                     type="submit"
                     disabled={formState === 'sending'}
-                    className="btn-angled bg-accent text-page font-condensed font-bold uppercase tracking-wider px-12 py-4 text-sm hover:bg-yellow-400 transition-colors disabled:opacity-60 w-full sm:w-auto"
+                    className="btn-angled bg-accent text-page font-condensed font-bold uppercase tracking-wider px-12 py-4 text-sm hover:bg-yellow-400 transition-colors disabled:opacity-60 w-full sm:w-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     {formState === 'sending' ? 'Sending...' : 'Submit RFQ'}
                   </button>

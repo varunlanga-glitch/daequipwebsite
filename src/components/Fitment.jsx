@@ -165,6 +165,7 @@ export default function Fitment() {
 
   // GSAP entrance
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     gsap.from(headingRef.current, {
       y: 40,
       opacity: 0,
@@ -176,6 +177,7 @@ export default function Fitment() {
   // Animate result panel in
   useEffect(() => {
     if (showResult && resultRef.current) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
       gsap.fromTo(
         resultRef.current,
         { opacity: 0, y: 20 },
@@ -329,7 +331,7 @@ export default function Fitment() {
               <button
                 onClick={handleCheck}
                 disabled={!model}
-                className="btn-angled w-full bg-accent text-page font-condensed font-bold uppercase tracking-wider px-6 py-3.5 text-sm hover:bg-yellow-400 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="btn-angled w-full bg-accent text-page font-condensed font-bold uppercase tracking-wider px-6 py-3.5 text-sm hover:bg-yellow-400 transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <MagnifyingGlass size={16} weight="bold" />
                 Check Fitment
@@ -446,7 +448,7 @@ export default function Fitment() {
             <button
               key={b}
               onClick={() => { setBrand(b); window.scrollTo({ top: sectionRef.current.offsetTop - 80, behavior: 'smooth' }) }}
-              className={`font-condensed text-xs uppercase tracking-[0.2em] transition-colors py-2 ${
+              className={`font-condensed text-xs uppercase tracking-[0.2em] transition-colors py-2 min-h-[44px] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
                 brand === b ? 'text-accent' : 'text-muted/40 hover:text-muted'
               }`}
             >

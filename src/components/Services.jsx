@@ -38,6 +38,8 @@ export default function Services() {
   const listRef = useRef(null)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     gsap.from(headingRef.current, {
       y: 40,
       opacity: 0,
@@ -64,8 +66,10 @@ export default function Services() {
       <div className="absolute inset-0">
         <img
           src={cdnImage('services-bg.jpg')}
-          alt="Welding fabrication"
+          alt=""
+          role="presentation"
           className="w-full h-full object-cover opacity-10"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-page/90" />
       </div>

@@ -70,7 +70,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-condensed text-sm uppercase tracking-widest transition-colors duration-200 relative ${
+                className={`font-condensed text-sm uppercase tracking-widest transition-colors duration-200 relative cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                   activeSection === link.href.slice(1)
                     ? 'text-accent'
                     : 'text-muted hover:text-text'
@@ -84,7 +84,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
-              className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-6 py-2.5 hover:bg-yellow-400 transition-colors"
+              className="btn-angled bg-accent text-page font-condensed font-semibold text-sm uppercase tracking-wider px-6 py-2.5 hover:bg-yellow-400 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Get a Quote
             </a>

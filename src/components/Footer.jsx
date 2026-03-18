@@ -35,12 +35,12 @@ export default function Footer() {
               Products
             </h4>
             <ul className="space-y-2.5 text-muted text-sm">
-              <li><a href="#products" className="hover:text-accent transition-colors">Digging Buckets</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Hydraulic Thumbs</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Long Reach Booms</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">WL Buckets & Attachments</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Machine Guarding</a></li>
-              <li><a href="#products" className="hover:text-accent transition-colors">Custom Fabrication</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">Digging Buckets</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">Hydraulic Thumbs</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">Long Reach Booms</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">WL Buckets & Attachments</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">Machine Guarding</a></li>
+              <li><a href="#products" className="hover:text-accent transition-colors cursor-pointer">Custom Fabrication</a></li>
             </ul>
           </div>
 
@@ -51,15 +51,15 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-2.5 text-muted text-sm">
-              <li><a href="#about" className="hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#services" className="hover:text-accent transition-colors">Services</a></li>
-              <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-accent transition-colors cursor-pointer">About Us</a></li>
+              <li><a href="#services" className="hover:text-accent transition-colors cursor-pointer">Services</a></li>
+              <li><a href="#contact" className="hover:text-accent transition-colors cursor-pointer">Contact</a></li>
               <li>
                 <a
                   href="https://dormelcontainers.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
+                  className="hover:text-accent transition-colors cursor-pointer"
                 >
                   Dormel Containers
                 </a>
@@ -77,7 +77,7 @@ export default function Footer() {
             <p className="text-muted text-xs mb-6">Closed weekends & statutory holidays</p>
             <a
               href="#contact"
-              className="btn-angled inline-block bg-accent text-page font-condensed font-bold uppercase tracking-wider px-6 py-2.5 text-xs hover:bg-yellow-400 transition-colors"
+              className="btn-angled inline-block bg-accent text-page font-condensed font-bold uppercase tracking-wider px-6 py-2.5 text-xs hover:bg-yellow-400 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Request a Quote
             </a>

@@ -71,6 +71,8 @@ export default function Products() {
   const cardsAnimated = useRef(false)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     gsap.from(headingRef.current, {
       y: 40,
       opacity: 0,
@@ -143,7 +145,7 @@ export default function Products() {
             <button
               key={tab.key}
               onClick={() => handleTabClick(tab.key)}
-              className={`font-condensed text-sm uppercase tracking-wider px-5 py-2.5 transition-all ${
+              className={`font-condensed text-sm uppercase tracking-wider px-5 py-3 min-h-[44px] cursor-pointer transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
                 activeTab === tab.key
                   ? 'bg-accent text-page font-bold'
                   : 'bg-card text-muted hover:text-text hover:bg-card-hover'
@@ -161,7 +163,7 @@ export default function Products() {
             return (
               <div
                 key={product.name}
-                className="product-card group relative overflow-hidden bg-card border border-white/5 hover:border-accent/20 transition-all"
+                className="product-card group relative overflow-hidden bg-card border border-white/5 hover:border-accent/20 transition-all cursor-pointer"
                 style={{ display: visible ? 'block' : 'none' }}
               >
                 <div className="relative h-48 overflow-hidden">
@@ -194,7 +196,7 @@ export default function Products() {
           <p className="text-muted mb-4 text-sm">Don't see what you need? We build custom attachments for any machine.</p>
           <a
             href="#contact"
-            className="btn-angled inline-block bg-rust text-text font-condensed font-bold uppercase tracking-wider px-8 py-3 text-sm hover:bg-orange-700 transition-colors"
+            className="btn-angled inline-block bg-rust text-text font-condensed font-bold uppercase tracking-wider px-8 py-3 text-sm hover:bg-orange-700 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             Request Custom Quote
           </a>

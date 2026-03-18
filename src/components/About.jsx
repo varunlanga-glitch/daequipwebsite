@@ -25,6 +25,8 @@ export default function About() {
   const statsRef = useRef(null)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     gsap.from(headingRef.current, {
       y: 40,
       opacity: 0,
@@ -56,6 +58,7 @@ export default function About() {
               src={cdnImage('about-hero.jpg')}
               alt="Heavy equipment at work"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-page/30 to-transparent" />
             {/* Accent corner */}

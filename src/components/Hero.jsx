@@ -14,6 +14,20 @@ export default function Hero() {
   const statsRef = useRef(null)
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion) {
+      // Show everything immediately without animation
+      const words = headlineRef.current?.querySelectorAll('.hero-word')
+      words?.forEach(w => { w.style.opacity = 1 })
+      document.querySelectorAll('.hero-subtitle, .hero-cta').forEach(el => { el.style.opacity = 1 })
+      const statEls = statsRef.current?.querySelectorAll('.stat-value')
+      statEls?.forEach((el) => {
+        el.textContent = el.dataset.value + (el.dataset.suffix || '')
+      })
+      return
+    }
+
     const words = headlineRef.current?.querySelectorAll('.hero-word')
     if (words?.length) {
       gsap.from(words, {
@@ -89,13 +103,13 @@ export default function Hero() {
           <div className="hero-cta flex flex-wrap gap-4">
             <a
               href="#products"
-              className="btn-angled bg-accent text-page font-condensed font-bold uppercase tracking-wider px-10 py-4 text-sm hover:bg-yellow-400 transition-colors"
+              className="btn-angled bg-accent text-page font-condensed font-bold uppercase tracking-wider px-10 py-4 text-sm hover:bg-yellow-400 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               View Products
             </a>
             <a
               href="#contact"
-              className="btn-angled border-2 border-text/20 text-text font-condensed font-bold uppercase tracking-wider px-10 py-4 text-sm hover:border-accent hover:text-accent transition-colors"
+              className="btn-angled border-2 border-text/20 text-text font-condensed font-bold uppercase tracking-wider px-10 py-4 text-sm hover:border-accent hover:text-accent transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Request a Quote
             </a>

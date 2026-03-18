@@ -19,6 +19,7 @@ export default function Industries() {
   const ref = useRef(null)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const items = ref.current?.querySelectorAll('.industry-item')
     if (items?.length) {
       gsap.from(items, {
@@ -44,7 +45,7 @@ export default function Industries() {
         </div>
         <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {INDUSTRIES.map(({ name, Icon, image }) => (
-            <div key={name} className="industry-item group relative overflow-hidden h-56 bg-card">
+            <div key={name} className="industry-item group relative overflow-hidden h-56 bg-card cursor-pointer">
               <img
                 src={image}
                 alt={name}
