@@ -2,16 +2,17 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { HardHat, Mountains, Tree, Drop, Plant, Recycle } from '@phosphor-icons/react'
+import { cdnImage } from '../cdn'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const INDUSTRIES = [
-  { name: 'Construction', Icon: HardHat, image: '/images/industry-construction.jpg' },
-  { name: 'Mining', Icon: Mountains, image: '/images/industry-mining.jpg' },
-  { name: 'Forestry', Icon: Tree, image: '/images/industry-forestry.jpg' },
-  { name: 'Oil & Gas', Icon: Drop, image: '/images/industry-oilgas.jpg' },
-  { name: 'Landscaping', Icon: Plant, image: '/images/industry-landscaping.jpg' },
-  { name: 'Waste Handling', Icon: Recycle, image: '/images/industry-waste.jpg' },
+  { name: 'Construction', Icon: HardHat, image: cdnImage('industry-construction.jpg') },
+  { name: 'Mining', Icon: Mountains, image: cdnImage('industry-mining.jpg') },
+  { name: 'Forestry', Icon: Tree, image: cdnImage('industry-forestry.jpg') },
+  { name: 'Oil & Gas', Icon: Drop, image: cdnImage('industry-oilgas.jpg') },
+  { name: 'Landscaping', Icon: Plant, image: cdnImage('industry-landscaping.jpg') },
+  { name: 'Waste Handling', Icon: Recycle, image: cdnImage('industry-waste.jpg') },
 ]
 
 export default function Industries() {

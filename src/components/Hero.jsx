@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { cdnImage, cdnVideo } from '../cdn'
 
 const STATS = [
   { value: 35, suffix: '+', label: 'Years in Business' },
@@ -56,9 +57,9 @@ export default function Hero() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          poster="/images/hero-bg.jpg"
+          poster={cdnImage('hero-bg.jpg')}
         >
-          <source src="/images/hero-video.mp4" type="video/mp4" />
+          <source src={cdnVideo('hero-video.mp4')} type="video/mp4" />
         </video>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-page via-page/85 to-page/40" />

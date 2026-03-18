@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { cdnImage } from '../cdn'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -9,49 +10,49 @@ const PRODUCTS = [
     name: 'Digging Buckets',
     category: 'excavator',
     specs: '400 AR Wear Steel, J-Series Teeth, XD/XDW/XDX Packages',
-    image: '/images/product-digging-buckets.jpg',
+    image: cdnImage('product-digging-buckets.jpg'),
   },
   {
     name: 'Hydraulic Thumbs',
     category: 'excavator',
     specs: 'X Series Direct Link, Cylinders In Stock, Pin-on or Weld-on',
-    image: '/images/product-hydraulic-thumbs.jpg',
+    image: cdnImage('product-hydraulic-thumbs.jpg'),
   },
   {
     name: 'Long Reach Booms',
     category: 'excavator',
     specs: 'EIK Series, 20+ Units Delivered, All Makes',
-    image: '/images/product-long-reach.jpg',
+    image: cdnImage('product-long-reach.jpg'),
   },
   {
     name: 'WL Buckets',
     category: 'wheelloader',
     specs: 'GP/Light/Woodchip/Sulphur, XD XDW XDX, Half Arrows/Teeth/Liners',
-    image: '/images/product-wl-buckets.jpg',
+    image: cdnImage('product-wl-buckets.jpg'),
   },
   {
     name: 'WL Attachments',
     category: 'wheelloader',
     specs: 'Forks/Grapples/Blades, Hydraulic Couplers, All Makes',
-    image: '/images/product-wl-attachments.jpg',
+    image: cdnImage('product-wl-attachments.jpg'),
   },
   {
     name: 'Machine Guarding',
     category: 'guarding',
     specs: 'Cab Guards/Catwalks, Rock Guards/Belly Pans, FOPS Available',
-    image: '/images/product-guarding.jpg',
+    image: cdnImage('product-guarding.jpg'),
   },
   {
     name: 'Dozer & ADT Parts',
     category: 'guarding',
     specs: 'Tailgates/Blades, Mining/Forestry/Oil & Gas, CAD-Engineered',
-    image: '/images/product-dozer-adt.jpg',
+    image: cdnImage('product-dozer-adt.jpg'),
   },
   {
     name: 'Custom Fabrication',
     category: 'custom',
     specs: 'CAD Drawings Provided, Structural Engineering, MOQ: 1 Unit',
-    image: '/images/product-custom-fab.jpg',
+    image: cdnImage('product-custom-fab.jpg'),
   },
 ]
 

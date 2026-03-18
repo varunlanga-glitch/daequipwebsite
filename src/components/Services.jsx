@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { PencilRuler, Drop, Hammer, Truck } from '@phosphor-icons/react'
+import { cdnImage } from '../cdn'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -62,7 +63,7 @@ export default function Services() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/images/services-bg.jpg"
+          src={cdnImage('services-bg.jpg')}
           alt="Welding fabrication"
           className="w-full h-full object-cover opacity-10"
         />

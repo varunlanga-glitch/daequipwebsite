@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { cdnImage } from '../cdn'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -52,7 +53,7 @@ export default function About() {
           {/* Image */}
           <div className="relative overflow-hidden h-80 md:h-auto">
             <img
-              src="/images/about-hero.jpg"
+              src={cdnImage('about-hero.jpg')}
               alt="Heavy equipment at work"
               className="w-full h-full object-cover"
             />

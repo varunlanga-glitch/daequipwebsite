@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Phone, Envelope, MapPin, Clock, Printer } from '@phosphor-icons/react'
+import { cdnImage } from '../cdn'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -100,7 +101,7 @@ export default function Contact() {
             {/* Map placeholder */}
             <div className="relative overflow-hidden h-48 bg-page border border-white/5">
               <img
-                src="/images/contact-fab.jpg"
+                src={cdnImage('contact-fab.jpg')}
                 alt="Daequip facility"
                 className="w-full h-full object-cover opacity-40"
               />
