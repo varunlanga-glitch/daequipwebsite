@@ -3,6 +3,7 @@ import { List, X, Phone } from '@phosphor-icons/react'
 
 const NAV_LINKS = [
   { label: 'Products', href: '#products' },
+  { label: 'Fitment', href: '#fitment' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },

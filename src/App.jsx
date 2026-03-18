@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import Products from './components/Products'
+import Fitment from './components/Fitment'
 import Industries from './components/Industries'
 import Services from './components/Services'
 import About from './components/About'
@@ -15,6 +16,7 @@ export default function App() {
       <Hero />
       <Marquee />
       <Products />
+      <Fitment />
       <Industries />
       <Services />
       <About />
