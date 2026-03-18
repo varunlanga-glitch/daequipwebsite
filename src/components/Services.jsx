@@ -62,7 +62,7 @@ export default function Services() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1920&q=80"
+          src="/images/services-bg.jpg"
           alt="Welding fabrication"
           className="w-full h-full object-cover opacity-10"
         />

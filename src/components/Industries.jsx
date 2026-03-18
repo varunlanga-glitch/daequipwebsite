@@ -6,36 +6,12 @@ import { HardHat, Mountains, Tree, Drop, Plant, Recycle } from '@phosphor-icons/
 gsap.registerPlugin(ScrollTrigger)
 
 const INDUSTRIES = [
-  {
-    name: 'Construction',
-    Icon: HardHat,
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mining',
-    Icon: Mountains,
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Forestry',
-    Icon: Tree,
-    image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Oil & Gas',
-    Icon: Drop,
-    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Landscaping',
-    Icon: Plant,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Waste Handling',
-    Icon: Recycle,
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=400&q=80',
-  },
+  { name: 'Construction', Icon: HardHat, image: '/images/industry-construction.jpg' },
+  { name: 'Mining', Icon: Mountains, image: '/images/industry-mining.jpg' },
+  { name: 'Forestry', Icon: Tree, image: '/images/industry-forestry.jpg' },
+  { name: 'Oil & Gas', Icon: Drop, image: '/images/industry-oilgas.jpg' },
+  { name: 'Landscaping', Icon: Plant, image: '/images/industry-landscaping.jpg' },
+  { name: 'Waste Handling', Icon: Recycle, image: '/images/industry-waste.jpg' },
 ]
 
 export default function Industries() {
@@ -72,6 +48,7 @@ export default function Industries() {
                 src={image}
                 alt={name}
                 className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-all duration-500 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-page via-page/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
@@ -80,7 +57,6 @@ export default function Industries() {
                   {name}
                 </span>
               </div>
-              {/* Bottom accent */}
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             </div>
           ))}

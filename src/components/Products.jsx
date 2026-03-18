@@ -9,49 +9,49 @@ const PRODUCTS = [
     name: 'Digging Buckets',
     category: 'excavator',
     specs: '400 AR Wear Steel, J-Series Teeth, XD/XDW/XDX Packages',
-    image: 'https://images.unsplash.com/photo-1621922688758-8d01eaf343eb?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-digging-buckets.jpg',
   },
   {
     name: 'Hydraulic Thumbs',
     category: 'excavator',
     specs: 'X Series Direct Link, Cylinders In Stock, Pin-on or Weld-on',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-hydraulic-thumbs.jpg',
   },
   {
     name: 'Long Reach Booms',
     category: 'excavator',
     specs: 'EIK Series, 20+ Units Delivered, All Makes',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-long-reach.jpg',
   },
   {
     name: 'WL Buckets',
     category: 'wheelloader',
     specs: 'GP/Light/Woodchip/Sulphur, XD XDW XDX, Half Arrows/Teeth/Liners',
-    image: 'https://images.unsplash.com/photo-1589168167538-3c0da7506617?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-wl-buckets.jpg',
   },
   {
     name: 'WL Attachments',
     category: 'wheelloader',
     specs: 'Forks/Grapples/Blades, Hydraulic Couplers, All Makes',
-    image: 'https://images.unsplash.com/photo-1625758476104-f2ed6c81248a?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-wl-attachments.jpg',
   },
   {
     name: 'Machine Guarding',
     category: 'guarding',
     specs: 'Cab Guards/Catwalks, Rock Guards/Belly Pans, FOPS Available',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-guarding.jpg',
   },
   {
     name: 'Dozer & ADT Parts',
     category: 'guarding',
     specs: 'Tailgates/Blades, Mining/Forestry/Oil & Gas, CAD-Engineered',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-dozer-adt.jpg',
   },
   {
     name: 'Custom Fabrication',
     category: 'custom',
     specs: 'CAD Drawings Provided, Structural Engineering, MOQ: 1 Unit',
-    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80',
+    image: '/images/product-custom-fab.jpg',
   },
 ]
 
@@ -121,7 +121,6 @@ export default function Products() {
   return (
     <section id="products" className="py-28 px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
         <div ref={headingRef} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <p className="font-condensed text-accent uppercase tracking-[0.3em] text-sm mb-3 flex items-center gap-3">
@@ -164,12 +163,12 @@ export default function Products() {
                 className="product-card group relative overflow-hidden bg-card border border-white/5 hover:border-accent/20 transition-all"
                 style={{ display: visible ? 'block' : 'none' }}
               >
-                {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                   <span className="absolute top-3 left-3 font-condensed text-[10px] uppercase tracking-wider bg-page/80 text-accent px-2 py-1 backdrop-blur-sm">
@@ -177,7 +176,6 @@ export default function Products() {
                   </span>
                 </div>
 
-                {/* Content */}
                 <div className="p-5">
                   <h3 className="font-heading text-2xl mb-2 group-hover:text-accent transition-colors">
                     {product.name}
@@ -185,14 +183,12 @@ export default function Products() {
                   <p className="text-muted text-sm leading-relaxed">{product.specs}</p>
                 </div>
 
-                {/* Yellow bottom border on hover */}
                 <div className="absolute bottom-0 left-0 w-full h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </div>
             )
           })}
         </div>
 
-        {/* CTA below products */}
         <div className="mt-12 text-center">
           <p className="text-muted mb-4 text-sm">Don't see what you need? We build custom attachments for any machine.</p>
           <a

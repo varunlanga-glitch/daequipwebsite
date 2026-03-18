@@ -52,7 +52,7 @@ export default function About() {
           {/* Image */}
           <div className="relative overflow-hidden h-80 md:h-auto">
             <img
-              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+              src="/images/about-hero.jpg"
               alt="Heavy equipment at work"
               className="w-full h-full object-cover"
             />

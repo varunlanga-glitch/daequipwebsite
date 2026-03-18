@@ -100,7 +100,7 @@ export default function Contact() {
             {/* Map placeholder */}
             <div className="relative overflow-hidden h-48 bg-page border border-white/5">
               <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+                src="/images/contact-fab.jpg"
                 alt="Daequip facility"
                 className="w-full h-full object-cover opacity-40"
               />

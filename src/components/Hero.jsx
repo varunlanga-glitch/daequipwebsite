@@ -11,7 +11,6 @@ const STATS = [
 export default function Hero() {
   const headlineRef = useRef(null)
   const statsRef = useRef(null)
-  const overlayRef = useRef(null)
 
   useEffect(() => {
     const words = headlineRef.current?.querySelectorAll('.hero-word')
@@ -25,11 +24,9 @@ export default function Hero() {
       })
     }
 
-    // Fade in the subtitle and CTA
     gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.6, delay: 0.7 })
     gsap.from('.hero-cta', { y: 20, opacity: 0, duration: 0.5, delay: 0.9 })
 
-    // Stats count-up
     const statEls = statsRef.current?.querySelectorAll('.stat-value')
     statEls?.forEach((el) => {
       const target = parseInt(el.dataset.value, 10)
@@ -51,16 +48,20 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" id="hero">
-      {/* Background image */}
+      {/* Video background */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80"
-          alt="Excavator on construction site"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-        />
+          poster="/images/hero-bg.jpg"
+        >
+          <source src="/images/hero-video.mp4" type="video/mp4" />
+        </video>
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-page via-page/90 to-page/50" />
-        {/* Bottom gradient for stats blend */}
+        <div className="absolute inset-0 bg-gradient-to-r from-page via-page/85 to-page/40" />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-page to-transparent" />
       </div>
 
