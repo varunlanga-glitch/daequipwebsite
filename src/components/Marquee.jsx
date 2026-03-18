@@ -1,29 +1,31 @@
-export default function Marquee() {
-  const items = [
-    '#YouCanDigUs',
-    '#DesignedToWork',
-    '#BuiltToLast',
-    'Made in Langley, BC',
-    '35+ Years',
-    '2 Year Warranty',
-    'Ships All of North America',
-  ]
+const ITEMS = [
+  'Quick Couplers',
+  'Excavator Buckets',
+  'Hydraulic Thumbs',
+  'Long Reach Booms',
+  'WL Attachments',
+  'Machine Guarding',
+  'Custom Fabrication',
+  'Canadian Made',
+  '400 AR Wear Steel',
+  '2-Year Warranty',
+]
 
-  // Triple the items for seamless loop
-  const repeated = [...items, ...items, ...items]
+export default function Marquee() {
+  const track = ITEMS.map((item, i) => (
+    <span key={i} className="flex items-center gap-8 shrink-0">
+      <span className="font-heading text-sm tracking-[0.2em] text-dark/80 whitespace-nowrap">
+        {item.toUpperCase()}
+      </span>
+      <span className="w-1.5 h-1.5 bg-accent rotate-45 shrink-0" />
+    </span>
+  ))
 
   return (
-    <div className="bg-accent overflow-hidden py-3 relative">
-      <div className="animate-marquee flex whitespace-nowrap">
-        {repeated.map((item, i) => (
-          <span
-            key={i}
-            className="font-condensed text-page font-bold uppercase tracking-wider text-sm mx-8 flex items-center gap-8"
-          >
-            {item}
-            <span className="text-page/40 text-lg">&bull;</span>
-          </span>
-        ))}
+    <div className="bg-page-alt border-y border-border py-4 overflow-hidden">
+      <div className="animate-marquee flex items-center gap-8" style={{ width: 'max-content' }}>
+        {track}
+        {track}
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ const PRODUCT_OPTIONS = [
   'Hydraulic Thumbs',
   'Long Reach Booms',
   'WL Buckets',
-  'WL Attachments',
+  'WL Forks & Grapples',
   'Machine Guarding',
   'Dozer & ADT Parts',
   'Custom Fabrication',
@@ -22,7 +22,7 @@ const CONTACT_INFO = [
   { Icon: Printer, label: 'Fax', value: '604-882-8007', href: null },
   { Icon: Envelope, label: 'Email', value: 'info@daequip.com', href: 'mailto:info@daequip.com' },
   { Icon: MapPin, label: 'Address', value: '2141 Queen Street, Abbotsford BC V2T6J3', href: null },
-  { Icon: Clock, label: 'Hours', value: 'Mon\u2013Fri 7:30 AM \u2013 4:30 PM', href: null },
+  { Icon: Clock, label: 'Hours', value: 'Mon–Fri 7:30 AM – 4:30 PM', href: null },
 ]
 
 export default function Contact() {
@@ -36,65 +36,45 @@ export default function Contact() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     gsap.from(headingRef.current, {
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
+      y: 40, opacity: 0, duration: 0.7,
       scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
     })
   }, [])
 
-  const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
-  }
+  const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
+  const handleSubmit = (e) => { e.preventDefault(); setFormState('sending'); setTimeout(() => setFormState('sent'), 1400) }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setFormState('sending')
-    setTimeout(() => setFormState('sent'), 1400)
-  }
-
-  const inputClass =
-    'w-full bg-page border border-white/10 px-4 py-3.5 text-text text-sm font-body focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent transition-colors placeholder:text-muted/60'
-
-  const labelClass =
-    'font-condensed text-[10px] uppercase tracking-widest text-accent mb-1.5 block'
+  const inputClass = 'w-full bg-white border border-border px-4 py-3.5 text-text text-sm font-body focus:outline-none focus:border-accent focus-visible:ring-1 focus-visible:ring-accent transition-colors placeholder:text-muted/60'
+  const labelClass = 'font-condensed text-[10px] uppercase tracking-widest text-accent mb-1.5 block'
 
   return (
-    <section id="contact" className="py-28 px-6 lg:px-10 bg-card">
+    <section id="contact" className="py-24 px-6 lg:px-10 bg-page-alt">
       <div className="max-w-7xl mx-auto">
-        <div ref={headingRef} className="text-center mb-16">
-          <p className="font-condensed text-accent uppercase tracking-[0.3em] text-sm mb-3">
-            Get in Touch
-          </p>
-          <h2 className="font-heading text-5xl md:text-6xl mb-4">
-            Request a Quote
-          </h2>
+        <div ref={headingRef} className="text-center mb-14">
+          <p className="font-condensed text-accent uppercase tracking-[0.3em] text-sm mb-3">Get in Touch</p>
+          <h2 className="font-heading text-5xl md:text-6xl text-dark mb-4">Request a Quote</h2>
           <p className="text-muted max-w-lg mx-auto text-sm">
-            Send us your specifications and our team will get back to you within 1 business day with a detailed quote.
+            Send us your specifications and our team will get back to you within 1 business day with a detailed quote and lead time.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-12 gap-12">
+        <div className="grid md:grid-cols-12 gap-8">
           {/* Contact info */}
           <div className="md:col-span-4">
-            <div className="bg-page p-8 border border-white/5 mb-6">
+            <div className="bg-dark p-8 mb-4">
               <h3 className="font-heading text-2xl mb-6 text-accent">Contact Info</h3>
               <div className="space-y-5">
                 {CONTACT_INFO.map(({ Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-card flex items-center justify-center shrink-0 border border-white/5">
-                      <Icon size={18} className="text-accent" weight="duotone" />
+                    <div className="w-10 h-10 bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+                      <Icon size={16} className="text-accent" weight="duotone" />
                     </div>
                     <div>
-                      <div className="font-condensed text-[10px] uppercase tracking-wider text-muted mb-0.5">
-                        {label}
-                      </div>
+                      <div className="font-condensed text-[10px] uppercase tracking-wider text-white/40 mb-0.5">{label}</div>
                       {href ? (
-                        <a href={href} className="text-text hover:text-accent transition-colors text-sm">
-                          {value}
-                        </a>
+                        <a href={href} className="text-white hover:text-accent transition-colors text-sm cursor-pointer">{value}</a>
                       ) : (
-                        <span className="text-text text-sm">{value}</span>
+                        <span className="text-white/80 text-sm">{value}</span>
                       )}
                     </div>
                   </div>
@@ -102,17 +82,12 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="relative overflow-hidden h-48 bg-page border border-white/5">
-              <img
-                src={cdnImage('contact-fab.jpg')}
-                alt="Daequip facility"
-                className="w-full h-full object-cover opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-page to-transparent" />
+            <div className="relative overflow-hidden h-44 bg-dark">
+              <img src={cdnImage('contact-fab.jpg')} alt="Daequip fabrication facility" className="w-full h-full object-cover opacity-50" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <p className="font-condensed text-xs uppercase tracking-wider text-accent">Langley, BC</p>
-                <p className="text-text text-sm">Made in Canada Since 1989</p>
+                <p className="text-white text-sm">Made in Canada Since 1989</p>
               </div>
             </div>
           </div>
@@ -120,7 +95,7 @@ export default function Contact() {
           {/* RFQ Form */}
           <div className="md:col-span-8">
             {formState === 'sent' ? (
-              <div className="bg-page border border-accent/30 p-12 text-center h-full flex flex-col items-center justify-center">
+              <div className="bg-white border border-accent/30 p-12 text-center h-full flex flex-col items-center justify-center">
                 <div className="w-16 h-16 bg-accent/10 flex items-center justify-center mb-6">
                   <Envelope size={32} className="text-accent" weight="duotone" />
                 </div>
@@ -130,81 +105,52 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-page border border-white/5 p-8 md:p-10">
-                <h3 className="font-heading text-2xl mb-6">RFQ Form</h3>
+              <form onSubmit={handleSubmit} className="bg-white border border-border p-8 md:p-10">
+                <h3 className="font-heading text-2xl text-dark mb-6">RFQ Form</h3>
                 <div className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="rfq-firstName" className={labelClass}>First Name *</label>
-                      <input
-                        id="rfq-firstName" type="text" name="firstName" placeholder="John" required
-                        value={form.firstName} onChange={handleChange} className={inputClass}
-                      />
+                      <input id="rfq-firstName" type="text" name="firstName" placeholder="John" required value={form.firstName} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="rfq-lastName" className={labelClass}>Last Name *</label>
-                      <input
-                        id="rfq-lastName" type="text" name="lastName" placeholder="Smith" required
-                        value={form.lastName} onChange={handleChange} className={inputClass}
-                      />
+                      <input id="rfq-lastName" type="text" name="lastName" placeholder="Smith" required value={form.lastName} onChange={handleChange} className={inputClass} />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="rfq-company" className={labelClass}>Company</label>
-                      <input
-                        id="rfq-company" type="text" name="company" placeholder="Smith Excavating Ltd."
-                        value={form.company} onChange={handleChange} className={inputClass}
-                      />
+                      <input id="rfq-company" type="text" name="company" placeholder="Smith Excavating Ltd." value={form.company} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="rfq-email" className={labelClass}>Email *</label>
-                      <input
-                        id="rfq-email" type="email" name="email" placeholder="john@company.com" required
-                        value={form.email} onChange={handleChange} className={inputClass}
-                      />
+                      <input id="rfq-email" type="email" name="email" placeholder="john@company.com" required value={form.email} onChange={handleChange} className={inputClass} />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="rfq-phone" className={labelClass}>Phone</label>
-                      <input
-                        id="rfq-phone" type="tel" name="phone" placeholder="(604) 000-0000"
-                        value={form.phone} onChange={handleChange} className={inputClass}
-                      />
+                      <input id="rfq-phone" type="tel" name="phone" placeholder="(604) 000-0000" value={form.phone} onChange={handleChange} className={inputClass} />
                     </div>
                     <div>
                       <label htmlFor="rfq-product" className={labelClass}>Product Interest</label>
-                      <select
-                        id="rfq-product" name="product" value={form.product} onChange={handleChange}
-                        className={`${inputClass} cursor-pointer`}
-                      >
+                      <select id="rfq-product" name="product" value={form.product} onChange={handleChange} className={`${inputClass} cursor-pointer`}>
                         <option value="">Select Product</option>
-                        {PRODUCT_OPTIONS.map((p) => (
-                          <option key={p} value={p}>{p}</option>
-                        ))}
+                        {PRODUCT_OPTIONS.map((p) => <option key={p} value={p}>{p}</option>)}
                       </select>
                     </div>
                   </div>
                   <div>
                     <label htmlFor="rfq-machine" className={labelClass}>Machine Make &amp; Model</label>
-                    <input
-                      id="rfq-machine" type="text" name="machineModel" placeholder="e.g. CAT 320 / 20T"
-                      value={form.machineModel} onChange={handleChange} className={inputClass}
-                    />
+                    <input id="rfq-machine" type="text" name="machineModel" placeholder="e.g. CAT 320 / 20T" value={form.machineModel} onChange={handleChange} className={inputClass} />
                   </div>
                   <div>
                     <label htmlFor="rfq-notes" className={labelClass}>Additional Notes</label>
-                    <textarea
-                      id="rfq-notes" name="notes" placeholder="Quantity, dimensions, specific requirements..." rows={5}
-                      value={form.notes} onChange={handleChange}
-                      className={`${inputClass} resize-none`}
-                    />
+                    <textarea id="rfq-notes" name="notes" placeholder="Quantity, dimensions, specific requirements..." rows={5} value={form.notes} onChange={handleChange} className={`${inputClass} resize-none`} />
                   </div>
-                  <button
-                    type="submit"
-                    disabled={formState === 'sending'}
-                    className="btn-angled bg-accent text-page font-condensed font-bold uppercase tracking-wider px-12 py-4 text-sm hover:bg-yellow-400 transition-colors disabled:opacity-60 w-full sm:w-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  <button type="submit" disabled={formState === 'sending'}
+                    className="bg-dark text-white font-condensed font-bold uppercase tracking-wider px-12 py-4 text-sm hover:bg-accent transition-colors disabled:opacity-60 w-full sm:w-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     {formState === 'sending' ? 'Sending...' : 'Submit RFQ'}
                   </button>
